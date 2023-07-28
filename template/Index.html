@@ -1,0 +1,541 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MEP Course in Dubai - Enroll Now!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+  
+  <style>
+    body{
+        overflow-x: hidden;
+    }
+    .con{
+        background-image: url("{% static 'head1.jpg' %}");
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
+
+    }
+
+
+
+
+    input,#submit{
+
+        box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    }
+
+    .slid p{
+        font-weight: bold;
+        font-size: 30px;
+        color:#fff ;
+    }
+
+
+    .benefits-section,.Students,.about-institute{
+        margin-top: 50px;
+        padding: 10px;
+    }
+
+    .course-curriculum{
+        margin-top: 50px;
+        padding: 10px;
+
+    }
+
+
+
+    .card {
+        position: relative;
+        width: 100%;
+    }
+
+    /* Styling for the image */
+    .card-img-top {
+        transition: transform 0.5s ease;
+    }
+
+    /* Styling for the text overlay */
+    .card-img-overlay {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        font-size : 25px;
+        font-weight:bold;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .card-img-overlay p{
+
+        position: relative;
+        top:40%;
+
+
+    }
+
+
+
+    /* Show text overlay on hover */
+    .card:hover .card-img-overlay {
+        opacity: 1;
+    }
+
+
+    .social-links a{
+        color: white;
+        text-decoration: none;
+    }
+
+
+
+
+
+
+    @media only screen and (max-width: 600px) {
+        .slid p{
+            font-weight: bold;
+            font-size: 20px;
+            color:#fff ;
+        }
+
+        .con{
+           
+            height: 100%;
+    
+        }
+    
+        
+      }
+
+
+  </style>
+</head>
+<body>
+
+ <div class="con" id="home">
+    <div class="row">
+        <div class='col-md-6 col-sm-12 col-lg-6 col-lg-6'>
+            <div class="mt-5 text-center hero-section" style="color:rgb(255, 255, 255)">
+                <h3><span style="font-weight: 1000; color :rgb(0, 132, 119); font-size:15vw">MEP</span><br><span style="font-size: 4vw; ">course in <span style="font-weight:800; text-transform:uppercase; font-size: 70px;">Dubai</span></span> <br><span style="font-size: 15px; font-weight:500; color:rgb(255, 255, 255);"><br> Unlock Your Potential!</span> </h3>
+
+
+
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner slid">
+                      <div class="carousel-item  active">
+                        <p>Hands-on Training</p>
+                      </div>
+                      <div class="carousel-item">
+                        <p>Industry-Recognized Certification</p>
+                      </div>
+                      <div class="carousel-item">
+                        <p>Expert Faculty</p>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+        </div>
+        <div class='col-md-6 col-sm-12 col-lg-6 col-lg-6 mb-5'>
+            <div class="col-md-9 col-12 col-sm-12 text-center cardd" style=" margin-top: 95px; background-color:rgba(0, 0, 0, 0.523); border-radius:8px; padding : 30px;  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;">
+                <h3 style="color: rgb(0, 132, 119);  font-weight:1000; ">Enroll Now</h3>
+                <br>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                    <input name="fname" id="fname" type="text" class="form-control mb-3" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                    <input name="email" id="email" type="email" class="form-control mb-3" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                    <input name="mobno" id="mobno" type="tel" class="form-control mb-3" placeholder="Phone Number" required>
+                    </div>
+                    <br>
+                    <button type="button" id="submit" class="btn btn-primary mb-3" style="background-color: rgb(0, 132, 119); border:none;">Enroll Now</button><br>
+                    <p id="message"><b></b></p>
+                </form>
+                </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <div class="benefits-section ">
+
+
+      <h1 class="text-center"><b>Benefits of the MEP Course</b></h1>
+
+      <div class="row mt-5">
+        <div class="col-12 col-md-6 text-center">
+            <img class="img-fluid" src="{% static 'benifits.png' %}" width="70%;">
+
+        </div>
+
+        <div class="col-12 col-md-6 mt-2">
+
+        <ul>
+            <li>Comprehensive MEP training covering HVAC, Plumbing, Electrical, and Firefighting systems.</li><br>
+            <li>Practical projects and real-world simulations for hands-on learning.</li><br>
+            <li>Industry-recognized certification upon successful completion.</li><br>
+            <li>Placement assistance for better career opportunities.</li><br>
+            <li>Flexible class timings to suit working professionals.</li><br>
+            <li>State-of-the-art facilities and modern learning environment.</li><br>
+          </ul>
+
+        </div>
+        </div>
+
+      
+
+
+    </div>
+
+
+
+
+
+    <div class="course-curriculum">
+
+        <h1 class="text-center"><b>Our Professional Courses</b></h1><br><br>
+
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner slid">
+                  <div class="carousel-item  active">
+                    <div class="row">
+                        <div class="col-12 col-md-2"></div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <!-- Image -->
+                                <img src="{% static 'head1.jpg' %}" class="card-img-top" alt="Image">
+                    
+                                <!-- Text overlay -->
+                                <div class="card-img-overlay">
+                                    <p>Civil</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <!-- Image -->
+                                <img src="{% static 'head1.jpg' %}" class="card-img-top" alt="Image">
+                    
+                                <!-- Text overlay -->
+                                <div class="card-img-overlay">
+                                    <p>Electrical</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                  </div>
+                  
+                  <div class="carousel-item">
+
+                    <div class="row">
+
+                        <div class="col-12 col-md-2"></div>
+                        
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <!-- Image -->
+                                <img src="{% static 'head1.jpg' %}" class="card-img-top" alt="Image">
+                    
+                                <!-- Text overlay -->
+                                <div class="card-img-overlay">
+                                    <p>Computer Science</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <!-- Image -->
+                                <img src="{% static 'head1.jpg' %}" class="card-img-top" alt="Image">
+                    
+                                <!-- Text overlay -->
+                                <div class="card-img-overlay">
+                                    <p>Communication</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  </div>
+
+                  <div class="carousel-item">
+
+                    <div class="row">
+
+                    
+                    
+                        <div class="col-12 col-md-2"></div>
+                        
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <!-- Image -->
+                                <img src="{% static 'head1.jpg' %}" class="card-img-top" alt="Image">
+                    
+                                <!-- Text overlay -->
+                                <div class="card-img-overlay">
+                                    <p>Mechnical</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <!-- Image -->
+                                <img src="{% static 'head1.jpg' %}" class="card-img-top" alt="Image">
+                    
+                                <!-- Text overlay -->
+                                <div class="card-img-overlay">
+                                    <p>Workshop</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+
+
+
+                  </div>
+                </div>
+              </div>
+
+        </div>
+
+    </div>
+
+
+    
+
+
+
+
+
+    <div class="Students">
+        <h1 class="text-center"><b>Our Students Say</b></h1><br><br>
+
+
+
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators" style="color:rgb(0, 0, 0)">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row">
+                    <div class="col-12 col-md-3"></div>
+                    <div class="col-12 col-md-6 text-center">
+                        <img src="https://yt3.googleusercontent.com/ytc/AOPolaQbMLQx3jQ19F99AWr9b_Th2u0AQJ0Umad3uhJv=s900-c-k-c0x00ffffff-no-rj" width="80px" style="border-radius:50%;box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;">
+                        <div class="car mb-5 p-4" style="box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;">
+                            <p>```We offer certified courses in various fields such as civil construction, engineering, management and specialized MEP course in Dubai.
+                                We offer certified courses in various fields such as civil construction, engineering, management and specialized MEP course in Dubai.```
+                            </p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                    <div class="col-12 col-md-3"></div>
+                    <div class="col-12 col-md-6 text-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQve0aBA_eiX0QzGM06z9l3Wzkci5WHrLVz5OHRAqiDWW6GR6UThoTR8d4PG4dIMeLfFOE&usqp=CAU" width="80px" style="border-radius:50%;box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;">
+                        <div class="car mb-5 p-4" style="box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;">
+                            <p>```We offer certified courses in various fields such as civil construction, engineering, management and specialized MEP course in Dubai.
+                                We offer certified courses in various fields such as civil construction, engineering, management and specialized MEP course in Dubai.```
+                            </p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                    <div class="col-12 col-md-3"></div>
+                    <div class="col-12 col-md-6 text-center">
+                        <img src="data:image/jpeg;base64,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" width="80px" style="border-radius:50%;box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;">
+                        <div class="car mb-5 p-4" style="box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;">
+                            <p>```We offer certified courses in various fields such as civil construction, engineering, management and specialized MEP course in Dubai.
+                                We offer certified courses in various fields such as civil construction, engineering, management and specialized MEP course in Dubai.```
+                            </p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <button style="color:rgb(0, 0, 0)" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button style="color:rgb(0, 0, 0)" class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+    </div>
+
+
+
+
+
+
+
+
+    <div class="about-institute text-center">
+
+        <h1 class="text-center" style="font-size: 30px;"><b>Start Your MEP Journey Today!</b></h1><br><br>
+
+        <a href="#home" class="btn btn-info" style="text-decoration: none; font-size:27px; color:white; font-weight:bold;box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;">Enroll Now</a><br><br>
+
+
+        
+      
+  </div>
+
+  <footer class="footer text-center p-5" style="background-color: rgb(0, 132, 119); color:#fff; font-weight:bold; box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;">
+    <p>Contact us: ajayoneness123@gmail.com | Phone: +91 8603862290</p>
+    <div class="social-links" style="font-size : 35px ">
+
+        <a href="https://www.instagram.com/code_ajay/"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/c0deaj"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://github.com/ajayoneness"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/codeaj/"><i class="fa-brands fa-linkedin"></i></a>
+      
+
+        
+    </div>
+    <p>Terms of Service | Privacy Policy | Disclaimer</p>
+  </footer>
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="{% static 'ajj.js' %}"></script>   
+<script>
+
+
+
+    VanillaTilt.init(document.querySelectorAll(".cardd"), {
+        max: 25,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.2,
+    });
+
+
+
+    $( document ).ready(function() {
+
+    $("#submit").click(function(){
+        fname = $("#fname").val()
+        email = $("#email").val()
+        mobno = $("#mobno").val()
+        message = $("#message")
+
+
+        if (fname==""){
+            alert("Please Enter Your Name")
+        }
+        else if(email == ""){
+            alert("Please Enter Your Email")
+        }
+        else if(mobno == ""){
+            alert("Please Enter Your Mob Number")
+        }
+        else{
+
+            const formData = {
+                name: fname,
+                email: email,
+                phone: mobno,
+            };
+
+            // Make the AJAX POST request
+            $.ajax({
+                url: "{% url "enrollment-create" %}", // Replace with the correct API endpoint
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                success: function (response) {
+                    // On successful enrollment creation
+                    message.text(response.message)
+                    message.css({ 'color': 'green', 'font-weight': 'bold' })
+                },
+                error: function (xhr, status, error) {
+                    // On error
+                    const errorMessage = xhr.responseJSON && xhr.responseJSON.error
+                        ? xhr.responseJSON.error
+                        : "An error occurred.";
+                    message.text(errorMessage)
+                    message.css({ 'color': 'red', 'font-weight': 'bold' })
+                },
+            });
+
+        }
+
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+});
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
