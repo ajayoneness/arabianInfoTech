@@ -99,6 +99,14 @@
         text-decoration: none;
     }
 
+    #hiddenBlock {
+        display: none; /* Hide the block initially */
+        background-color: #f0f0f0;
+        overflow: hidden; /* Hide any overflowing content */
+        transition: 1s;
+
+      }
+
 
 
 
@@ -126,6 +134,49 @@
 <body>
 
  <div class="con" id="home">
+
+    <div class="nav">
+
+        
+        <nav id="hiddenBlock" class="navbar navbar-expand-lg pt-3 pb-3" style=" z-index:99; width: 100%; position :fixed; background-color: rgb(0, 132, 119); color:#fff; font-weight:bold; box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;">
+            <div class="container-fluid">
+              <a class="navbar-brand" style="color: white;" href="#">AribianInfo Tech</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarText">
+
+
+                <ul class="navbar-nav text-right me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" style="color: white;" aria-current="page" href="#home">HOME</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" style="color: white;" aria-current="page" href="#benifits">BENIFITS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" style="color: white;" aria-current="page" href="#cources">COURSES</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" style="color: white;" aria-current="page" href="#student">STUDENTS</a>
+                  </li>
+                </ul>
+
+                <a class="nav-link active" style="color: white;" aria-current="page" href="https://codeajay.pythonanywhere.com/">Ajay Pandit</a>
+
+              </div>
+            </div>
+          </nav>
+
+
+
+
+    </div>
+
+
+
+
     <div class="row">
         <div class='col-md-6 col-sm-12 col-lg-6 col-lg-6'>
             <div class="mt-5 text-center hero-section" style="color:rgb(255, 255, 255)">
@@ -162,7 +213,7 @@
                     <input name="email" id="email" type="email" class="form-control mb-3" placeholder="Email Address" required>
                     </div>
                     <div class="form-group">
-                    <input name="mobno" id="mobno" type="tel" class="form-control mb-3" placeholder="Phone Number" required>
+                    <input maxlength="10" name="mobno" id="mobno" type="tel" class="form-control mb-3" placeholder="Phone Number" required>
                     </div>
                     <br>
                     <button type="button" id="submit" class="btn btn-primary mb-3" style="background-color: rgb(0, 132, 119); border:none;">Enroll Now</button><br>
@@ -175,7 +226,7 @@
 
 
 
-    <div class="benefits-section ">
+    <div class="benefits-section " id="benifits">
 
 
       <h1 class="text-center"><b>Benefits of the MEP Course</b></h1>
@@ -209,9 +260,9 @@
 
 
 
-    <div class="course-curriculum">
+    <div class="course-curriculum" id="cources">
 
-        <h1 class="text-center"><b>Our Professional Courses</b></h1><br><br>
+        <h1 class="text-center" ><b>Our Professional Courses</b></h1><br><br>
 
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner slid">
@@ -332,7 +383,7 @@
 
 
 
-    <div class="Students">
+    <div class="Students" id="student">
         <h1 class="text-center"><b>Our Students Say</b></h1><br><br>
 
 
@@ -427,7 +478,11 @@
 
         
     </div>
-    <p>Terms of Service | Privacy Policy | Disclaimer</p>
+<br>
+      <a href="{% url 'download_csv' %}" style="color:white; text-decoration : none;">Download Enrollment Data as CSV</a>
+<br><br>
+    <p>Terms of Service | Privacy Policy | Disclaimer | </p>
+
   </footer>
 
 
@@ -461,6 +516,49 @@
 
 
     $( document ).ready(function() {
+
+      
+
+        var previousScroll = 0;
+        var hiddenBlock = $('#hiddenBlock');
+        var scrollingDown = false;
+
+        $(window).scroll(function() {
+            var currentScroll = $(this).scrollTop();
+
+            if (currentScroll > previousScroll) {
+            // Scrolling down
+            scrollingDown = true;
+            } else {
+            // Scrolling up
+            scrollingDown = false;
+            }
+
+            previousScroll = currentScroll;
+
+            if (scrollingDown) {
+            hiddenBlock.css('display', 'block');
+            hiddenBlock.css('transition', '1s');
+            } else {
+            hiddenBlock.css('display', 'none');
+            hiddenBlock.css('transition', '1s');
+            }
+        });
+
+        
+
+        
+ 
+ 
+
+
+
+
+
+
+
+
+
 
     $("#submit").click(function(){
         fname = $("#fname").val()

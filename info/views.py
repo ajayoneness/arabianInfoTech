@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+import csv
+from django.http import HttpResponse
 from .models import Enrollment
 
 
@@ -49,3 +51,19 @@ def enrollment_create(request):
 
         return JsonResponse({"message": "Enrolled successfully."},
                             status=201)
+
+
+
+def download_enrollment_data_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="enrollment_data.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['Name', 'Email', 'Phone'])
+
+    enrollments = Enrollment.objects.all()
+
+    for enrollment in enrollments:
+        writer.writerow([enrollment.name, enrollment.email, enrollment.phone])
+
+    return response
