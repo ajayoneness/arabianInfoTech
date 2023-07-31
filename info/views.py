@@ -59,11 +59,11 @@ def download_enrollment_data_csv(request):
     response['Content-Disposition'] = 'attachment; filename="enrollment_data.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(['Name', 'Email', 'Phone'])
+    writer.writerow(['Name', 'Email', 'Phone','dateTime'])
 
     enrollments = Enrollment.objects.all()
 
     for enrollment in enrollments:
-        writer.writerow([enrollment.name, enrollment.email, enrollment.phone])
+        writer.writerow([enrollment.name, enrollment.email, enrollment.phone,enrollment.datetime])
 
     return response
